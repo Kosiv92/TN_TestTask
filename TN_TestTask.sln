@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TN_TestTask.WebMVC", "TN_Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TN_TestTask.Core", "TN_TestTask.Core\TN_TestTask.Core.csproj", "{28998B0A-C7CC-44B1-BF2A-3B6B38F6FDB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TN_TestTask.Infrastructure", "TN_TestTask.Infrastructure\TN_TestTask.Infrastructure.csproj", "{868D3B7B-4A0E-44CF-9606-55B9AAA437B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{28998B0A-C7CC-44B1-BF2A-3B6B38F6FDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28998B0A-C7CC-44B1-BF2A-3B6B38F6FDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28998B0A-C7CC-44B1-BF2A-3B6B38F6FDB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{868D3B7B-4A0E-44CF-9606-55B9AAA437B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{868D3B7B-4A0E-44CF-9606-55B9AAA437B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{868D3B7B-4A0E-44CF-9606-55B9AAA437B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{868D3B7B-4A0E-44CF-9606-55B9AAA437B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
