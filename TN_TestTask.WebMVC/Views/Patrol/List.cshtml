@@ -1,0 +1,29 @@
+﻿<h2>Общее количество: @ViewBag.Patrols.Count</h2>
+<h3>Список авиапатрулей:</h3>
+<table class="table table-sm">
+    <tr>
+        <th>
+            Наименование
+        </th>
+        <th>
+            Описание
+        </th>
+        <th>
+            Дата и время начала
+        </th>
+        <th>
+            Дата и время окончания
+        </th>
+    </tr>
+    <tr>
+        @foreach (var patrol in ViewBag.Patrols)
+        {
+            <td>
+                @patrol.Title
+            </td>
+            <td>
+                @patrol.Description
+            </td>
+        }
+    </tr>
+</table>

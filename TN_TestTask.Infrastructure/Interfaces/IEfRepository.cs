@@ -5,7 +5,7 @@ using TN_TestTask.Core;
 
 namespace TN_TestTask.Infrastructure
 {
-    internal interface IEfRepository<T> where T : BaseEntity
+    public interface IEfRepository<T> where T : BaseEntity
     {
         public Task<T?> GetByIdAsync(Guid id);
 
