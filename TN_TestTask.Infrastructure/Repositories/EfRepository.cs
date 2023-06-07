@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TN_TestTask.Core;
 using TN_TestTask.Core.Exceptions;
-using TN_TestTask.Infrastructure.Interfaces;
 
-namespace TN_TestTask.Infrastructure.Repositories
+namespace TN_TestTask.Infrastructure
 {
-    internal class EfRepository<T> : IEfRepository<T> where T : BaseEntity
+    public class EfRepository<T> : IEfRepository<T> where T : BaseEntity
     {
         public DbContext _context;
         public DbSet<T> _dbSet;
