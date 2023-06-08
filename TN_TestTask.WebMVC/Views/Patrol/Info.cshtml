@@ -1,0 +1,16 @@
+﻿@model PatrolItemDto
+
+<form asp-action="Edit" acp-controller="Patrol" method="post" asp-route-id="@Model.Id">
+    <fieldset>
+        <legend>Наименование</legend>
+        <input name="Title" asp-for="Title" value="@Model.Title"
+               class="form-control-sm" required />
+    </fieldset>
+    <fieldset>
+        <legend>Описание</legend>
+        <textarea name="Description" asp-for="Description"
+                  value="@Model.Description" class="form-control-range"></textarea>
+        <span asp-validation-for="Description" class="attention"></span>
+    </fieldset>
+    <input type="submit" value="Записать изменения" class="btn-sm">
+</form>
