@@ -27,7 +27,7 @@ namespace TN_TestTask.Infrastructure
 
         public async Task DeleteAsync(Guid id)
         {
-            var entity = _dbSet.FirstOrDefault(x => x.Id == id);
+            var entity = await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
             if (entity == null)
                 throw new NotFoundException(nameof(entity), id);
 
