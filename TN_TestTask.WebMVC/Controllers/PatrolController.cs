@@ -17,11 +17,81 @@ namespace TN_TestTask.WebMVC.Controllers
         public PatrolController(IMediator mediator) 
             => _mediator = mediator;
         
-
+        /// <summary>
+        /// Получение списка всех сущностей
+        /// </summary>
+        /// <param name="title">Настройка фильтрации списка</param>
+        /// <param name="sortOrder">Настройка сортировки списка</param>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string title, SortState sortOrder = SortState.TitleAsc)
         {            
-            return View();
+            var request = new GetPatrolsListQuery()
+            {
+                TitleFilter = title,
+                SortOrder = sortOrder
+            };
+
+            try
+            {
+                var viewModel = await _mediator.Send(request);
+                return View(viewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
+        /// <summary>
+        /// Получение подробной информации о сущности по ее Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("[action]/{id:guid}")]
+        public async Task<IActionResult> Info([FromRoute] Guid id)
+        {
+            var request = new GetPatrolQuery { Id = id };
+
+            var patrolDto = await _mediator.Send(request);
+
+            return View(patrolDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(UpdatePatrolCommand request)
+        {
+            if (!ModelState.IsValid) return View("Info", request.Id);
+
+            try
+            {
+                var result = await _mediator.Send(request);
+                return RedirectToAction("Info", new { id = result } );
+            }
+            catch
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
+        /// <summary>
+        /// Удаление сущности по Id номеру
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("[action]/{id:guid}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            var request = new DeletePatrolCommand { Id = id };
+            try
+            {
+                await _mediator.Send(request);
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         /// <summary>
@@ -30,7 +100,7 @@ namespace TN_TestTask.WebMVC.Controllers
         /// <returns></returns>
         [HttpGet]
         public IActionResult Create()
-            => View();
+            => View(new CreatePatrolCommand());
 
 
         /// <summary>
@@ -45,9 +115,10 @@ namespace TN_TestTask.WebMVC.Controllers
             
             try
             {
-                await _mediator.Send(request);
+                var result = await _mediator.Send(request);
+                
             }
-            catch(Exception ex)
+            catch
             {
                 return RedirectToAction("Error");
             }
@@ -61,7 +132,8 @@ namespace TN_TestTask.WebMVC.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel 
+            { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         public IActionResult Index()
