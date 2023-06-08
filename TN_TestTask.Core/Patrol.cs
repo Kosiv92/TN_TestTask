@@ -6,5 +6,5 @@ namespace TN_TestTask.Core
         public string Title { get; set; }
 
         public string Description { get; set; }
-    }
+    }        
 }

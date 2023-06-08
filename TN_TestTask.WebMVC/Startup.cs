@@ -49,7 +49,7 @@ namespace TN_TestTask.WebMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Patrol}/{action=Index}/{id?}");
             });
         }
     }

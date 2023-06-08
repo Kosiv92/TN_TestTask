@@ -1,29 +1,41 @@
-﻿<h2>Общее количество: @ViewBag.Patrols.Count</h2>
+﻿@model IndexViewModel
+
+<h2>Общее количество: @Model.Patrols.Count()</h2>
 <h3>Список авиапатрулей:</h3>
+
+<form method="get">
+    <div>
+        <label>Наименование:</label>
+        <input name="title" value="@Model.FilterViewModel.SelectedTitle" class="form-control-sm" />
+        <input type="submit" value="Поиск" class="btn-sm" />
+    </div>
+</form>
+
 <table class="table table-sm">
     <tr>
         <th>
-            Наименование
-        </th>
-        <th>
-            Описание
-        </th>
-        <th>
-            Дата и время начала
-        </th>
-        <th>
-            Дата и время окончания
+            <a asp-action="List"
+               asp-route-sortOrder="@(Model.SortViewModel.TitleSort)"
+               asp-route-title="@(Model.FilterViewModel.SelectedTitle)">
+                Наименование
+            </a>
         </th>
     </tr>
-    <tr>
-        @foreach (var patrol in ViewBag.Patrols)
-        {
+
+    @foreach (var patrol in Model.Patrols)
+    {
+        <tr>
             <td>
-                @patrol.Title
+                <a asp-action="Info" asp-route-id="@patrol.Id">
+                    @patrol.Title
+                </a>
             </td>
             <td>
-                @patrol.Description
+                <a asp-action="Delete" asp-route-id="@patrol.Id">
+                    Удалить
+                </a>
             </td>
-        }
-    </tr>
+        </tr>
+    }
+
 </table>

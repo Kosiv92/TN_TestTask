@@ -12,7 +12,7 @@
     </fieldset>
     <fieldset>
         <legend>Введите описание</legend>
-        <textarea name="Description" asp-for="Description" value="@Model.Description" class="form-control-range" />
+        <textarea name="Description" asp-for="Description" value="@Model.Description" class="form-control-range"></textarea>
         <span asp-validation-for="Description" class="attention"></span>
     </fieldset>
     <input type="submit" value="Записать" class="btn-sm">

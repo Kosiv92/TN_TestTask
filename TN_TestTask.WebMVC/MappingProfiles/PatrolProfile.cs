@@ -9,6 +9,9 @@ namespace TN_TestTask.WebMVC
         public PatrolProfile()
         {
             CreateMap<CreatePatrolCommand, Patrol>();
+            CreateMap<UpdatePatrolCommand, Patrol>();
+            CreateMap<Patrol, PatrolListItemDto>();
+            CreateMap<Patrol, PatrolItemDto>();
         }
     }
 }

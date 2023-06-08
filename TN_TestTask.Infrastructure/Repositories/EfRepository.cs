@@ -36,7 +36,9 @@ namespace TN_TestTask.Infrastructure
 
         public async Task<IEnumerable<T>> GetAll()
         {
-           return await _context.Set<T>().ToListAsync();
+           return await _context.Set<T>()
+                .AsNoTracking()
+                .ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(Guid id)
