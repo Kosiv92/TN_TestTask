@@ -19,12 +19,7 @@ namespace TN_TestTask.Infrastructure.Configurations
             builder.Property(x => x.Description)
                 .HasMaxLength(250)
                 .IsRequired(false);
-
-            builder.Property(x => x.DateBegin)
-                .IsRequired();
-
-            builder.Property(x => x.DateEnd)
-                .IsRequired();
+                        
         }
     }
 }

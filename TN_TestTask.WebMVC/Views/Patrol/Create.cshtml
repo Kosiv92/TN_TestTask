@@ -1,0 +1,19 @@
+﻿@model CreatePatrolCommand
+@{
+    ViewData["Title"] = "Добавление данных об авиапатруле";
+}
+
+<h3>Добавить новый авиапатруль</h3>
+<form asp-action="Create" acp-controller="Patrol" method="post">
+    <fieldset>
+        <legend>Введите наименование</legend>
+        <input type="text" name="Title" asp-for="Title" value="@Model.Title" class="form-control-sm" required />
+        <span asp-validation-for="Title" class="attention"></span>
+    </fieldset>
+    <fieldset>
+        <legend>Введите описание</legend>
+        <textarea name="Description" asp-for="Description" value="@Model.Description" class="form-control-range" />
+        <span asp-validation-for="Description" class="attention"></span>
+    </fieldset>
+    <input type="submit" value="Записать" class="btn-sm">
+</form>
