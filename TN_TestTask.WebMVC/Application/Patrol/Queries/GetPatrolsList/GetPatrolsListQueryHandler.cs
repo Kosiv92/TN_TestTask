@@ -39,6 +39,12 @@ namespace TN_TestTask.WebMVC.Application
                 case SortState.TitleDesc:
                     patrolsDto = patrolsDto.OrderByDescending(s => s.Title);
                     break;
+                case SortState.StatusAsc:
+                    patrolsDto = patrolsDto.OrderBy(s => s.Status);
+                    break;
+                case SortState.StatusDesc:
+                    patrolsDto = patrolsDto.OrderByDescending(s => s.Status);
+                    break;
                 default:
                     patrolsDto = patrolsDto.OrderBy(s => s.Title);
                     break;

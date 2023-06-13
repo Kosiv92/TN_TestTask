@@ -14,9 +14,8 @@
     </fieldset>
     <fieldset>
         <legend>Статус</legend>
-        <select name="Status" asp-for="Status" asp-items="Html.GetEnumSelectList<PatrolStatus>()">
-            <option value="@Model.Status"></option>
-        </select>
+        <select name="Status" asp-for="Status" asp-items="Html.GetEnumSelectList<PatrolStatus>()" required></select>        
+        <span asp-validation-for="Status" class="attention"></span>
     </fieldset>
     <input type="submit" value="Записать изменения" class="btn-sm">
 </form>

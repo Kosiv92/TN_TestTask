@@ -21,7 +21,11 @@
             </a>
         </th>
         <th>
+            <a asp-action="List"
+               asp-route-sortOrder="@(Model.SortViewModel.StatusSort)"
+               asp-route-title="@(Model.FilterViewModel.SelectedTitle)">
             Статус
+            </a>
         </th>
     </tr>
 
@@ -34,7 +38,7 @@
                 </a>
             </td>
             <td>
-                @patrol.Status
+                @patrol.Status.GetName()
             </td>
             <td>
                 <a asp-action="Delete" asp-route-id="@patrol.Id">

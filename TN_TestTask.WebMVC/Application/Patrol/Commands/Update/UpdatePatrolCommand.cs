@@ -14,6 +14,7 @@ namespace TN_TestTask.WebMVC.Application
         [StringLength(250, ErrorMessage = "Укажите наименование не более {1} символов")]
         public string Description { get; set; }
 
+        [Required(ErrorMessage = "Статус должен быть задан")]
         public PatrolStatus Status { get; set; }
     }
 }

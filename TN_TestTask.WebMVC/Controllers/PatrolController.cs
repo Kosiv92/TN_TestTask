@@ -58,7 +58,7 @@ namespace TN_TestTask.WebMVC.Controllers
             return View(patrolDto);
         }
 
-        [HttpPost]
+        [HttpPost("[action]/{id:guid}")]
         public async Task<IActionResult> Edit(UpdatePatrolCommand request)
         {
             if (!ModelState.IsValid) return View("Info", request.Id);
