@@ -22,6 +22,7 @@ namespace TN_TestTask.WebMVC.Application
 
             patrol.Title = request.Title;
             patrol.Description = request.Description;
+            patrol.Status = request.Status;
                         
             await _repository.SaveChangesAsync();
 

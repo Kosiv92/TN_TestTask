@@ -20,6 +20,9 @@
                 Наименование
             </a>
         </th>
+        <th>
+            Статус
+        </th>
     </tr>
 
     @foreach (var patrol in Model.Patrols)
@@ -29,6 +32,9 @@
                 <a asp-action="Info" asp-route-id="@patrol.Id">
                     @patrol.Title
                 </a>
+            </td>
+            <td>
+                @patrol.Status
             </td>
             <td>
                 <a asp-action="Delete" asp-route-id="@patrol.Id">

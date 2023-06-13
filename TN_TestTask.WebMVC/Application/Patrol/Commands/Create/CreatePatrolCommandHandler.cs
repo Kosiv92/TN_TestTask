@@ -23,6 +23,8 @@ namespace TN_TestTask.WebMVC.Application
         public async Task<Guid> Handle(CreatePatrolCommand request, CancellationToken cancellationToken)
         {
             var patrol = _mapper.Map<CreatePatrolCommand, Patrol>(request);
+            patrol.Status = PatrolStatus.Created;
+
             await _repository.CreateAsync(patrol);
             await _repository.SaveChangesAsync();
             return patrol.Id;

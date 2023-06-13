@@ -4,6 +4,8 @@ namespace TN_TestTask.WebMVC.Application
 {
     public class PatrolListItemDto : BaseEntity
     {        
-        public string Title { get; set; }
+        public string Title { get; private set; }
+        public PatrolStatus Status { get; private set; }
+
     }
 }
