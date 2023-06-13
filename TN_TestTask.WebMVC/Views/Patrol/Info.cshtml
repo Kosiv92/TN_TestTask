@@ -12,5 +12,11 @@
                   value="@Model.Description" class="form-control-range"></textarea>
         <span asp-validation-for="Description" class="attention"></span>
     </fieldset>
+    <fieldset>
+        <legend>Статус</legend>
+        <select name="Status" asp-for="Status" asp-items="Html.GetEnumSelectList<PatrolStatus>()">
+            <option value="@Model.Status"></option>
+        </select>
+    </fieldset>
     <input type="submit" value="Записать изменения" class="btn-sm">
 </form>
