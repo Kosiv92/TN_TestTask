@@ -9,9 +9,10 @@ namespace TN_TestTask.Infrastructure
     {
         public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<DbContext, PatrolDbContext>()
-                    .AddScoped<IEfRepository<Patrol>, EfRepository<Patrol>>()                    
-                    .AddDbContext<PatrolDbContext>(options =>
+            services.AddScoped<DbContext, AppDbContext>()
+                    .AddScoped<IEfRepository<Patrol>, EfRepository<Patrol>>()
+                    .AddScoped<IEfRepository<Place>, EfRepository<Place>>()
+                    .AddDbContext<AppDbContext>(options =>
                     {
                         //переделать на получение строки подключения из файла конфигурации
                         //var connectionString = configuration.GetConnectionString("PatrolDb");

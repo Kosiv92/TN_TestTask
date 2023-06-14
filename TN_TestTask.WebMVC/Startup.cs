@@ -26,7 +26,7 @@ namespace TN_TestTask.WebMVC
             services.AddMediatR(Assembly.GetExecutingAssembly());
         }
                 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, PatrolDbContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext dbContext)
         {
             dbContext.Database.EnsureCreated();
             

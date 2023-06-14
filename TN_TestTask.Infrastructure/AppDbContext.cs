@@ -4,11 +4,12 @@ using TN_TestTask.Core;
 
 namespace TN_TestTask.Infrastructure
 {
-    public class PatrolDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<Patrol> Patrols { get; private set; }
+        public DbSet<Place> Places { get; private set; }
 
-        public PatrolDbContext(DbContextOptions<PatrolDbContext> options) : base(options) { }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

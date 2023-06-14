@@ -19,7 +19,14 @@ namespace TN_TestTask.Infrastructure.Configurations
             builder.Property(x => x.Description)
                 .HasMaxLength(250)
                 .IsRequired(false);
-                        
+
+            builder.Property(x=> x.Status)
+                .IsRequired();
+
+            builder.HasOne(e => e.Place)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

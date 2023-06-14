@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Place>
+
+<h2>Список объектов</h2>
+@foreach (var place in Model)
+{
+    <div>
+        @place.Name
+    </div>
+}
