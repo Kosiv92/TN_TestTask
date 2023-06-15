@@ -24,8 +24,14 @@
             <a asp-action="List"
                asp-route-sortOrder="@(Model.SortViewModel.StatusSort)"
                asp-route-title="@(Model.FilterViewModel.SelectedTitle)">
-            Статус
+                Статус
             </a>
+        </th>
+        <th>
+            Объект
+        </th>
+        <th>
+            Удалить
         </th>
     </tr>
 
@@ -41,8 +47,12 @@
                 @patrol.Status.GetName()
             </td>
             <td>
+                @patrol.Place.Name
+            </td>
+            <td>
                 <a asp-action="Delete" asp-route-id="@patrol.Id">
-                    Удалить
+                    <img src="~/img/delete.png" alt="Удалить"
+                         width="15" height="15" />
                 </a>
             </td>
         </tr>

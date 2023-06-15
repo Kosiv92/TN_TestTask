@@ -16,8 +16,4 @@
     <ProjectReference Include="..\TN_TestTask.Infrastructure\TN_TestTask.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\Place\" />
-  </ItemGroup>
-
 </Project>

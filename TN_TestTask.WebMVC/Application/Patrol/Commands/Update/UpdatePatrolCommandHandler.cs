@@ -3,7 +3,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using TN_TestTask.Core;
-using TN_TestTask.Infrastructure;
 
 namespace TN_TestTask.WebMVC.Application
 {
@@ -23,6 +22,7 @@ namespace TN_TestTask.WebMVC.Application
             patrol.Title = request.Title;
             patrol.Description = request.Description;
             patrol.Status = request.Status;
+            patrol.PlaceId = Guid.Parse(request.PlaceId);
                         
             await _repository.SaveChangesAsync();
 

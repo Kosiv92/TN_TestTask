@@ -1,9 +1,20 @@
-﻿@model IEnumerable<Place>
+﻿@model IEnumerable<PlaceListItemDto>
 
 <h2>Список объектов</h2>
-@foreach (var place in Model)
-{
-    <div>
-        @place.Name
-    </div>
-}
+
+<table class="table table-sm">
+    <tr>
+        <th>
+            Наименование объекта
+        </th>
+    </tr>
+    @foreach (var place in Model)
+    {
+        <tr>
+            <td>
+                @place.Name
+            </td>
+        </tr>
+    }
+</table>
+<a asp-controller="Place" asp-action="Create">Создать объект</a>

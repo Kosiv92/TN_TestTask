@@ -25,9 +25,13 @@ namespace TN_TestTask.WebMVC.Application
 
         public async Task<IndexViewModel> Handle(GetPatrolsListQuery request, CancellationToken cancellationToken)
         {
-            var patrols = await _repository.GetAll();
+            //var patrols = await _repository.GetAll();
 
-            var patrolsDto = patrols.AsQueryable().ProjectTo<PatrolListItemDto>(_mapper.ConfigurationProvider);                        
+            var patrols = await _repository.GetAllInclude(p => p.Place);
+            
+            var patrolsDto = patrols
+                .AsQueryable()
+                .ProjectTo<PatrolListItemDto>(_mapper.ConfigurationProvider);                        
 
             if (!String.IsNullOrEmpty(request.TitleFilter))
             {

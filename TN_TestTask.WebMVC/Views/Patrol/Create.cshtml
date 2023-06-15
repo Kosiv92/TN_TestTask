@@ -15,5 +15,9 @@
         <textarea name="Description" asp-for="Description" value="@Model.Description" class="form-control-range"></textarea>
         <span asp-validation-for="Description" class="attention"></span>
     </fieldset>
+    <fieldset>
+        <legend>Объект</legend>
+        <select name="PlaceId" asp-for="PlaceId" asp-items="@((List<SelectListItem>)ViewData["places"])" ></select>
+    </fieldset>
     <input type="submit" value="Записать" class="btn-sm">
 </form>

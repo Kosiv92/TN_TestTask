@@ -13,8 +13,12 @@
         <span asp-validation-for="Description" class="attention"></span>
     </fieldset>
     <fieldset>
+        <legend>Объект</legend>
+        <select name="PlaceId" asp-for="PlaceId" asp-items="@((List<SelectListItem>)ViewData["places"])"></select>
+    </fieldset>
+    <fieldset>
         <legend>Статус</legend>
-        <select name="Status" asp-for="Status" asp-items="Html.GetEnumSelectList<PatrolStatus>()" required></select>        
+        <select name="Status" asp-for="Status" asp-items="Html.GetEnumSelectList<PatrolStatus>()" required></select>
         <span asp-validation-for="Status" class="attention"></span>
     </fieldset>
     <input type="submit" value="Записать изменения" class="btn-sm">

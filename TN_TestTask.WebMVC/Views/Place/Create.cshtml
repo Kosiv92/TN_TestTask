@@ -1,5 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CreatePlaceCommand
 @{
+    ViewData["Title"] = "Добавление нового объекта";
 }
+
+<h3>Добавить новый объект</h3>
+<form asp-action="Create" acp-controller="Place" method="post">
+    <fieldset>
+        <legend>Введите название объекта</legend>
+        <input type="text" name="Name" asp-for="Name" value="@Model.Name" class="form-control-sm" required />
+        <span asp-validation-for="Name" class="attention"></span>
+    </fieldset>    
+    <input type="submit" value="Записать" class="btn-sm">
+</form>

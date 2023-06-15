@@ -16,5 +16,8 @@ namespace TN_TestTask.WebMVC.Application
 
         [Required(ErrorMessage = "Статус должен быть задан")]
         public PatrolStatus Status { get; set; }
+
+        [Required(ErrorMessage = "Объект должен быть задан")]
+        public string PlaceId { get; set; }
     }
 }

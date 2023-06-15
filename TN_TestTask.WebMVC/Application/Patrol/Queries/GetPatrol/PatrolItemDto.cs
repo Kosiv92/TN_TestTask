@@ -1,4 +1,5 @@
-﻿using TN_TestTask.Core;
+﻿using System;
+using TN_TestTask.Core;
 
 namespace TN_TestTask.WebMVC.Application
 {
@@ -9,5 +10,7 @@ namespace TN_TestTask.WebMVC.Application
         public string Description { get; private set; }
 
         public PatrolStatus Status { get; private set; }
+
+        public Guid PlaceId { get; private set; }
     }
 }

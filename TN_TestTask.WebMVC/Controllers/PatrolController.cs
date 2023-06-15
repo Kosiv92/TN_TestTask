@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using TN_TestTask.Core;
-using TN_TestTask.Infrastructure;
 using TN_TestTask.WebMVC.Application;
 using TN_TestTask.WebMVC.Models;
 
@@ -13,9 +14,10 @@ namespace TN_TestTask.WebMVC.Controllers
     public class PatrolController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IEfRepository<Place> _placeRepository;
 
-        public PatrolController(IMediator mediator) 
-            => _mediator = mediator;
+        public PatrolController(IMediator mediator, IEfRepository<Place> placeRepository) 
+            => (_mediator, _placeRepository) = (mediator, placeRepository);
         
         /// <summary>
         /// Получение списка всех сущностей
@@ -52,6 +54,13 @@ namespace TN_TestTask.WebMVC.Controllers
         public async Task<IActionResult> Info([FromRoute] Guid id)
         {
             var request = new GetPatrolQuery { Id = id };
+
+            var places = await _placeRepository.GetAll();
+            ViewData["places"] = places.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
 
             var patrolDto = await _mediator.Send(request);
 
@@ -99,8 +108,16 @@ namespace TN_TestTask.WebMVC.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Create()
-            => View(new CreatePatrolCommand());
+        public async Task<IActionResult> Create()
+        { 
+            var places = await _placeRepository.GetAll();
+            ViewData["places"] = places.Select(x => new SelectListItem{ 
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
+            return View(new CreatePatrolCommand());
+        }
+           
 
 
         /// <summary>
@@ -115,8 +132,7 @@ namespace TN_TestTask.WebMVC.Controllers
             
             try
             {
-                var result = await _mediator.Send(request);
-                
+                var result = await _mediator.Send(request);                
             }
             catch
             {

@@ -13,5 +13,7 @@ namespace TN_TestTask.WebMVC.Application
 
         [StringLength(250, ErrorMessage = "Укажите наименование не более {1} символов")]
         public string Description { get; set; }
+
+        public string PlaceId { get; set; }
     }
 }
