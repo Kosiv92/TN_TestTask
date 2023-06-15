@@ -11,12 +11,15 @@ namespace TN_TestTask.WebMVC.Models
 
         public SortState StatusSort { get; private set; }
 
+        public SortState PlaceSort { get; private set; }
+
         public SortState Current { get; private set; }
 
         public SortViewModel(SortState sortOrder)
         {
             TitleSort = sortOrder == SortState.TitleAsc ? SortState.TitleDesc : SortState.TitleAsc;
             StatusSort = sortOrder == SortState.StatusAsc ? SortState.StatusDesc : SortState.StatusAsc;
+            PlaceSort = sortOrder == SortState.PlaceAsc ? SortState.PlaceDesc : SortState.PlaceAsc;
             Current = sortOrder;
         }
     }
@@ -26,6 +29,8 @@ namespace TN_TestTask.WebMVC.Models
         TitleAsc,
         TitleDesc,
         StatusAsc,
-        StatusDesc
+        StatusDesc,
+        PlaceAsc,
+        PlaceDesc
     }
 }

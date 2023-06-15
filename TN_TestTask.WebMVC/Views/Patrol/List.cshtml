@@ -28,7 +28,11 @@
             </a>
         </th>
         <th>
-            Объект
+            <a asp-action="List"
+               asp-route-sortOrder="@(Model.SortViewModel.PlaceSort)"
+               asp-route-title="@(Model.FilterViewModel.SelectedTitle)">
+                Объект
+            </a>
         </th>
         <th>
             Удалить
