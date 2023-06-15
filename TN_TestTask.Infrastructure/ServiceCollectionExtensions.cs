@@ -13,10 +13,8 @@ namespace TN_TestTask.Infrastructure
                     .AddScoped<IEfRepository<Patrol>, EfRepository<Patrol>>()
                     .AddScoped<IEfRepository<Place>, EfRepository<Place>>()
                     .AddDbContext<AppDbContext>(options =>
-                    {
-                        //переделать на получение строки подключения из файла конфигурации
-                        //var connectionString = configuration.GetConnectionString("PatrolDb");
-                        options.UseSqlite("Data Source = PatrolDb");
+                    {                        
+                        options.UseSqlite(configuration.GetConnectionString("DataContext"));
                     });
 
             return services;
