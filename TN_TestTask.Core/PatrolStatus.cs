@@ -6,17 +6,13 @@ using System.Reflection;
 namespace TN_TestTask.Core
 {
     public enum PatrolStatus
-    {
-        [Description("Создан")]
+    {        
         [Display(Name="Создан")]
-        Created,
-        [Description("В работе")]
+        Created,        
         [Display(Name = "В работе")]
-        Started,
-        [Description("Завершен")]
+        Started,        
         [Display(Name = "Завершен")]
-        Finished,
-        [Description("Отменен")]
+        Finished,        
         [Display(Name = "Отменен")]
         Canceled
     }
@@ -30,9 +26,9 @@ namespace TN_TestTask.Core
             
             if (memInfo != null && memInfo.Length > 0)
             {
-                object[] attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                object[] attrs = memInfo[0].GetCustomAttributes(typeof(DisplayAttribute), false);
                 if (attrs != null && attrs.Length > 0)
-                    return ((DescriptionAttribute)attrs[0]).Description;
+                    return ((DisplayAttribute)attrs[0]).GetName();
             }
 
             return enumElement.ToString();
