@@ -37,29 +37,12 @@ namespace TN_TestTask.Infrastructure
         public async Task<IEnumerable<T>> GetAll()
         {
            return await _context.Set<T>()
-                .AsNoTracking()
+                //.AsNoTracking()
                 .ToListAsync();
-        }
-
-        public async Task<IEnumerable<T>> GetAllInclude(params Expression<Func<T, object>>[] includingEntities)
-        {
-            var query = _context.Set<T>().AsNoTracking();
-
-            foreach (var e in includingEntities)
-            {
-                query = query.Include(e);
-            }
-
-            return await query.ToListAsync();
-        }
+        }                
 
         public async Task<T> GetByIdAsync(Guid id)
-            => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
-        
-
-        public async Task<T> GetByIdIncludeAsync(Guid id, string includeEntityNames)
-            => await _context.Set<T>().Include(includeEntityNames).FirstAsync(x => x.Id == id);
-        
+            => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);                                
 
         public async Task SaveChangesAsync()
             => await _context.SaveChangesAsync();

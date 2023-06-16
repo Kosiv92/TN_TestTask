@@ -8,13 +8,9 @@ namespace TN_TestTask.Core
 {
     public interface IEfRepository<T> where T : BaseEntity
     {
-        public Task<T?> GetByIdAsync(Guid id);
+        public Task<T?> GetByIdAsync(Guid id);                
 
-        public Task<T?> GetByIdIncludeAsync(Guid id, string includeEntityNames);
-
-        public Task<IEnumerable<T>> GetAll();
-
-        public Task<IEnumerable<T>> GetAllInclude(params Expression<Func<T, object>>[] includingEntities);
+        public Task<IEnumerable<T>> GetAll();                
 
         public Task<Guid> CreateAsync(T entity);
 

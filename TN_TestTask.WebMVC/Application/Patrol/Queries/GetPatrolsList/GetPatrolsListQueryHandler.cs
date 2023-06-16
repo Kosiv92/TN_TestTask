@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TN_TestTask.Core;
-using TN_TestTask.Infrastructure;
 using TN_TestTask.WebMVC.Models;
 
 namespace TN_TestTask.WebMVC.Application
@@ -25,10 +24,8 @@ namespace TN_TestTask.WebMVC.Application
 
         public async Task<IndexViewModel> Handle(GetPatrolsListQuery request, CancellationToken cancellationToken)
         {
-            //var patrols = await _repository.GetAll();
-
-            var patrols = await _repository.GetAllInclude(p => p.Place);
-            
+            var patrols = await _repository.GetAll();
+                                    
             var patrolsDto = patrols
                 .AsQueryable()
                 .ProjectTo<PatrolListItemDto>(_mapper.ConfigurationProvider);                        

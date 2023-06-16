@@ -14,6 +14,7 @@ namespace TN_TestTask.Infrastructure
                     .AddScoped<IEfRepository<Place>, EfRepository<Place>>()
                     .AddDbContext<AppDbContext>(options =>
                     {                        
+                        options.UseLazyLoadingProxies();
                         options.UseSqlite(configuration.GetConnectionString("DataContext"));
                     });
 

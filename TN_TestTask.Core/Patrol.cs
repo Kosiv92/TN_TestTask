@@ -10,7 +10,7 @@ namespace TN_TestTask.Core
 
         public PatrolStatus Status { get; set; }
 
-        public Place Place { get; set; }
+        public virtual Place Place { get; set; }
 
         public Guid PlaceId { get; set; }
     }        

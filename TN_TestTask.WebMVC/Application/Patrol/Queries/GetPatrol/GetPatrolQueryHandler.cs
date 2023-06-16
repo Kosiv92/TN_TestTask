@@ -3,7 +3,6 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using TN_TestTask.Core;
-using TN_TestTask.Infrastructure;
 
 namespace TN_TestTask.WebMVC.Application
 {
