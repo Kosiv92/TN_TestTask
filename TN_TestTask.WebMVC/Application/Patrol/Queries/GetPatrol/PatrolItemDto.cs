@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using TN_TestTask.Core;
 
 namespace TN_TestTask.WebMVC.Application
@@ -12,5 +14,7 @@ namespace TN_TestTask.WebMVC.Application
         public PatrolStatus Status { get; private set; }
 
         public Guid PlaceId { get; private set; }
+
+        public List<SelectListItem> Places { get; set; }
     }
 }

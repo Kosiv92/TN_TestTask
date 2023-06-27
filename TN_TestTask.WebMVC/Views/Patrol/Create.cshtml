@@ -17,7 +17,7 @@
     </fieldset>
     <fieldset>
         <legend>Объект</legend>
-        <select name="PlaceId" asp-for="PlaceId" asp-items="@((List<SelectListItem>)ViewData["places"])" ></select>
+        <select name="PlaceId" asp-for="PlaceId" asp-items="@Model.Places" ></select>
     </fieldset>
     <input type="submit" value="Записать" class="btn-sm">
 </form>

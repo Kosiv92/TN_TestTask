@@ -53,14 +53,7 @@ namespace TN_TestTask.WebMVC.Controllers
         [HttpGet("[action]/{id:guid}")]
         public async Task<IActionResult> Info([FromRoute] Guid id)
         {
-            var request = new GetPatrolQuery { Id = id };
-
-            var places = await _placeRepository.GetAll();
-            ViewData["places"] = places.Select(x => new SelectListItem
-            {
-                Value = x.Id.ToString(),
-                Text = x.Name
-            }).ToList();
+            var request = new GetPatrolQuery { Id = id };                        
 
             var patrolDto = await _mediator.Send(request);
 
@@ -75,7 +68,8 @@ namespace TN_TestTask.WebMVC.Controllers
             try
             {
                 var result = await _mediator.Send(request);
-                return RedirectToAction("Info", new { id = result } );
+                
+                return RedirectToAction("List");
             }
             catch
             {
@@ -109,13 +103,18 @@ namespace TN_TestTask.WebMVC.Controllers
         /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Create()
-        { 
+        {
+            var newPatrol = new CreatePatrolCommand();
+
             var places = await _placeRepository.GetAll();
-            ViewData["places"] = places.Select(x => new SelectListItem{ 
+
+            newPatrol.Places = places.Select(x => new SelectListItem
+            {
                 Value = x.Id.ToString(),
                 Text = x.Name
             }).ToList();
-            return View(new CreatePatrolCommand());
+                                    
+            return View(newPatrol);
         }
            
 

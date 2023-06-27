@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -15,5 +17,7 @@ namespace TN_TestTask.WebMVC.Application
         public string Description { get; set; }
 
         public string PlaceId { get; set; }
+
+        public List<SelectListItem> Places { get; set; }
     }
 }
